@@ -77,6 +77,8 @@ jobs:
 
     - name: Helm Chart Save
       run: |
+        ls -l ./
+        ls -l ./content-web
         cd ./Fabmedical/content-web/charts/web
         helm version
         helm chart save . content-web:v${{ env.tag }}
