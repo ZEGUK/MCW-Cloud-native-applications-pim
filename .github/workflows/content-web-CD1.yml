@@ -38,7 +38,7 @@ jobs:
     - name: Helm Install
       uses: azure/setup-helm@v1
       with:
-        version: v3.9.0
+        version: v3.4.0
 
     - name: Helm Repo Add
       run: |
@@ -75,7 +75,7 @@ jobs:
     - name: Helm Install
       uses: azure/setup-helm@v1
       with:
-        version: v3.9.0
+        version: v3.4.0
 
     - name: kubeconfig
       run: echo "${{ secrets.KUBECONFIG }}" >> kubeconfig
