@@ -1,4 +1,4 @@
-name: content-web-CD
+name: content-web-CICD
 
 # This workflow is triggered on push to the 'content-web' directory of the  master branch of the repository
 on:
@@ -103,7 +103,7 @@ jobs:
     - name: Helm Install
       uses: azure/setup-helm@v1
       with:
-        version: v3.9.0
+        version: v3.4.0
 
     - name: kubeconfig
       run: echo "${{ secrets.KUBECONFIG }}" >> kubeconfig
@@ -118,6 +118,7 @@ jobs:
     - name: Helm Upgrade
       run: |
         helm registry login ${{ env.containerRegistry }} --username ${{ secrets.ACR_USERNAME }} --password ${{ secrets.ACR_PASSWORD }}
+        helm chart pull ${{ env.containerRegistry }}/helm/content-web:v${{ env.tag }}
       env:
         KUBECONFIG: './kubeconfig'
         HELM_EXPERIMENTAL_OCI: 1
