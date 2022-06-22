@@ -20,9 +20,9 @@ on:
 # resourceGroupName，containerRegistryName，containerRegistry替换为自己的
 env:
  imageRepository: 'content-web'
- resourceGroupName: 'fabmedical-0614'
- containerRegistryName: 'fabmedical0614'
- containerRegistry: 'fabmedical0614.azurecr.io'
+ resourceGroupName: 'mydocker'
+ containerRegistryName: 'registry622'
+ containerRegistry: 'registry622.azurecr.io'
  dockerfilePath: './Fabmedical/content-web'
  tag: '${{ github.run_id  }}'
 
@@ -55,4 +55,4 @@ jobs:
         push: true
         tags: |
           ${{ env.containerRegistry }}/${{ env.imageRepository }}:${{ env.tag }}
-          ${{ env.containerRegistry }}/${{ env.imageRepository }}:latest
+          ${{ env.containerRegistry }}/${{ env.imageRepository }}:v0
